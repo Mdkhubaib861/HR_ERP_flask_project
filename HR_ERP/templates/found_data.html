@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: #eef2f7;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            background: #111827;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            color: #9ca3af;
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #1f2933;
+            color: #38bdf8;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+        }
+
+        /* Login Card */
+        .login-card {
+            max-width: 400px;
+            margin: 80px auto;
+            border-radius: 14px;
+            border: none;
+        }
+
+        .login-card .card-header {
+            background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #0ea5e9;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+        }
+        .sidebar a.disabled-link{
+        color : #6c757d;
+        color :cyen;
+        pointer-events : none;
+        cursor : default;
+        }
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+             xyz_company_management_system
+        </a>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin_dashboard_login"> Home</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ===== Sidebar ===== -->
+<div class="sidebar">
+    <a href="/add_employee">Add Employee</a>
+    <a href="/edit_employee">Edit Employee</a>
+    <a href="/delete_employee" >Delete Employee</a>
+    <a href="/search_employee" class="active disabled-link">Search Employee</a>
+    <a href="/show_all">Show All</a>
+    <a href="/">Logout</a>
+</div>
+<div class="content">
+
+    <h2 class="text-center mb-4" style="margin-top:50px">Edit Employee</h2>
+    {% if employee %}
+    <table>
+      <tr>
+        <th>Emp Name</th>
+
+        <th>Emp Email</th>
+          <th>Emp Mobile</th>
+        <th>Emp Gender</th>
+        <th>Emp Photo</th>
+        <th>Emp Skill</th>
+        <th>Emp Dept</th>
+
+      </tr>
+
+      <tr>
+        <td>{{employee[1]}}</td>
+        <td>{{employee[2]}}</td>
+        <td>{{employee[3]}}</td>
+        <td>{{employee[4]}}</td>
+        <td>{{employee[5]}}</td>
+        <td>{{employee[6]}}</td>
+        <td>{{employee[7]}}</td>
+      </tr>
+
+    </table>
+
+    {% else %}
+        <div class="alert alert-danger">
+            No record Found!
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

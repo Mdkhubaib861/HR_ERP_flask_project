@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: #eef2f7;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            background: #111827;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            color: #9ca3af;
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #1f2933;
+            color: #38bdf8;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+        }
+
+        /* Login Card */
+        .login-card {
+            max-width: 400px;
+            margin: 80px auto;
+            border-radius: 14px;
+            border: none;
+        }
+
+        .login-card .card-header {
+            background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #0ea5e9;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+        }
+        .sidebar a.disabled-link{
+        color : #6c757d;
+        color :cyen;
+        pointer-events : none;
+        cursor : default;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+             xyz_company_management_system
+        </a>
+<!--        <ul class="navbar-nav ms-auto">-->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/admin_dashboard_login"> Home</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+    </div>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <a href="/add_employee" class="active disabled-link">Add Employee</a>
+    <a href="/edit_employee">Edit Employee</a>
+    <a href="/delete_employee" >Delete Employee</a>
+    <a href="/search_employee">Search Employee</a>
+    <a href="/show_all">Show All</a>
+    <a href="/logout">Logout</a>
+</div>
+<!-- Content -->
+<div class="content">
+    <h2 class="text-center mb-4" style="margin-top:50px"> add employee</h2>
+    <div class="container" style="max-width 600px; background:white; padding:25px; border:1px solid #add;">
+        <form action="/registration" method="post">
+
+            <!-- Name -->
+            <div class="mb-3">
+                <label class="form-label">Employee Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter name">
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter email">
+            </div>
+
+            <!-- Mobile Number -->
+            <div class="mb-3">
+                <label class="form-label">Mobile Number</label>
+                <input type="text" class="form-control" name="mobile" placeholder="Enter mobile number">
+            </div>
+
+            <!-- Gender -->
+            <div class="mb-3">
+                <label class="form-label">Gender</label><br>
+
+                <input type="radio" name="gender" value="Male"> Male
+                <input type="radio" name="gender" value="Female"> Female
+            </div>
+
+            <!-- Upload Photo -->
+            <div class="mb-3">
+                <label class="form-label">Upload Photo</label>
+                <input type="file" class="form-control" name="photo">
+            </div>
+
+            <!-- Skills -->
+            <div class="mb-3">
+                <label class="form-label">Skills</label>
+                <select class="form-select" name="skills">
+                    <option>Select Skill</option>
+                    <option>Java</option>
+                    <option>Python</option>
+                    <option>HTML</option>
+                    <option>CSS</option>
+                    <option>JavaScript</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Department</label>
+                <select class="form-select" name="department">
+                    <option>Select Department</option>
+                    <option>IT</option>
+                    <option>Finance</option>
+                    <option>Sales</option>
+                    <option>Human Resources (HR)</option>
+                    <option>Research & Development (R&D)</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">
+                    Add Employee
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

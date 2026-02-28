@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: #eef2f7;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            background: #111827;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            color: #9ca3af;
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #1f2933;
+            color: #38bdf8;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 220px;
+            margin-top: 90px;
+            padding: 40px;
+            background: #f3f6fb;
+            min-height: 100vh;
+        }
+
+        .dashboard-card {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            border-radius: 16px;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s ease;
+            box-shadow: 0 8px 20px rgba(32, 58, 67, 0.4);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card-header {
+            background: linear-gradient(90deg, #0f2027, #203a43);
+            color: white;
+            font-weight: 600;
+        }
+
+        .table tbody tr:hover {
+            background: #f1f5f9;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+             xyz_company_management_system
+        </a>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#"> Home</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <a href="/add_employee">Add Employee</a>
+    <a href="/edit_employee">Edit Employee</a>
+    <a href="/delete_employee" >Delete Employee</a>
+    <a href="/search_employee">Search Employee</a>
+    <a href="/show_all">Show All</a>
+    <a href="/logout">Logout</a>
+</div>
+<!-- Content -->
+<div class="content">
+
+    <!-- Welcome Section -->
+    <div class="bg-light p-4 rounded shadow-sm mb-4">
+        <h4 class="fw-bold">Welcome back, Admin 👋</h4>
+        <p class="text-muted mb-0">Here’s what’s happening in your company today.</p>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row g-4">
+
+        <!-- Total Employees -->
+        <div class="col-md-4">
+            <div class="card dashboard-card border-0">
+                <i class="bi bi-people-fill fs-1 mb-3"></i>
+                <h6>Total Employees</h6>
+                <h3 class="fw-bold">{{ total }}</h3>
+            </div>
+        </div>
+
+        <!-- Male Employees -->
+        <div class="col-md-4">
+            <div class="card dashboard-card border-0">
+                <i class="bi bi-gender-male fs-1 mb-3"></i>
+                <h6>Male Employees</h6>
+                <h3 class="fw-bold">{{ male }}</h3>
+            </div>
+        </div>
+
+        <!-- Female Employees -->
+        <div class="col-md-4">
+            <div class="card dashboard-card border-0">
+                <i class="bi bi-gender-female fs-1 mb-3"></i>
+                <h6>Female Employees</h6>
+                <h3 class="fw-bold">{{ female }}</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Department Section -->
+    <div class="card shadow border-0 mt-5">
+        <div class="card-header">
+            Employees by Department
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Department</th>
+                        <th>Employees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dept, count in departments %}
+                    <tr>
+                        <td>{{ dept }}</td>
+                        <td>{{ count }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

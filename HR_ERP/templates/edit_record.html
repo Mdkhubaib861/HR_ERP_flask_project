@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            background: #eef2f7;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            background: #111827;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            color: #9ca3af;
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #1f2933;
+            color: #38bdf8;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+        }
+
+        /* Login Card */
+        .login-card {
+            max-width: 400px;
+            margin: 80px auto;
+            border-radius: 14px;
+            border: none;
+        }
+
+        .login-card .card-header {
+            background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #0ea5e9;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+        }
+        .sidebar a.disabled-link{
+        color : #6c757d;
+        color :cyen;
+        pointer-events : none;
+        cursor : default;
+        }
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<!-- ===== Navbar ===== -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Admin Panel</a>
+    </div>
+</nav>
+<!-- ===== Sidebar ===== -->
+<div class="sidebar">
+    <a href="/" class="disabled-link">Add Employee</a>
+    <a href="/edit_employee">Edit Employee</a>
+    <a href="/delete_employee">Delete Employee</a>
+    <a href="/search_employee">Search Employee</a>
+    <a href="/show_all">Display All Employees</a>
+    <a href="/logout">Logout</a>
+</div>
+<!-- ===== Main Content ===== -->
+<div class="content">
+    <h1 style="margin-top:50px"align="center">Edit Employee</h1>
+    <div class="form-box">
+        <form action="/update_record" method="post">
+            <input type="text" class="form-control" value="{{selected_emp[0]}}" name="eid" readonly>
+            <!-- Name -->
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" value="{{selected_emp[1]}}" placeholder="Enter Your name" required>
+            </div>
+
+            <!-- Mobile -->
+            <div class="mb-3">
+                <label class="form-label">Mobile</label>
+                <input type="tel" class="form-control" name="mobile" value="{{selected_emp[3]}}" placeholder="Enter mobile number" required>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" value="{{selected_emp[2]}}" placeholder="Enter email" required>
+            </div>
+
+            <!-- Gender -->
+            <div class="mb-3">
+                <label class="form-label d-block">Gender</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" value="Male" required>
+                    <label class="form-check-label">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" value="Female">
+                    <label class="form-check-label">Female</label>
+                </div>
+            </div>
+
+            <!-- Upload Photo -->
+            <div class="mb-3">
+                <label class="form-label">Upload Photo</label>
+                <input class="form-control" type="file" name="photo" accept="image/*" required>
+            </div>
+
+            <!-- Skills -->
+            <div class="mb-3">
+                <label class="form-label">Skills</label>
+                <select class="form-select" name="skills">
+                    <option>Select Skill</option>
+                    <option>Python</option>
+                    <option>Java</option>
+                    <option>C++</option>
+                    <option>JavaScript</option>
+                    <option>HTML/CSS</option>
+                    <option>SQL</option>
+                    <option>PHP</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Department</label>
+                <select class="form-select" name="department">
+                    <option>Select Department</option>
+                    <option>Sales</option>
+                    <option>IT</option>
+                    <option>Finance</option>
+                    <option>Human Resources (HR)</option>
+                    <option>Research & Development (R&D)</option>
+                    <option>Development</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-dark w-100">Update Data</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
